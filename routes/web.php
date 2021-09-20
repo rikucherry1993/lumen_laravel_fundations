@@ -16,6 +16,6 @@ use Illuminate\Support\Facades\Route;
 // action: a closure = anonymous function. define/run at same context 
 // view(view name): a laravel helper function, to rend a desinated view.
 // view name: can be found at [resources/views]
-Route::get('/', function () {
+Route::get('/{any?}', function () {
   return view('welcome');
-});
+})->where('any', '^(?!api\/)[\/\w\.-]*'); //not allow accessing api routes from browser
