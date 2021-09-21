@@ -12,5 +12,30 @@ const mix = require('laravel-mix');
  */
 
 mix.js('resources/js/app.js', 'public/js')
-    .vue()
-    .sass('resources/sass/app.scss', 'public/css');
+  .vue()
+  .sass('resources/sass/app.scss', 'public/css');
+
+mix.webpackConfig({
+  resolve:
+  {
+    fallback:
+    {
+      "path": require.resolve("path-browserify"),
+      "crypto": require.resolve("crypto-browserify"),
+      "zlib": require.resolve("browserify-zlib"),
+      "stream": require.resolve("stream-browserify"),
+      "https": require.resolve("https-browserify"),
+      "http": require.resolve("stream-http"),
+      "vm": require.resolve("vm-browserify"),
+      "os": require.resolve("os-browserify/browser"),
+      "constants": require.resolve("constants-browserify"),
+      "fs": false,
+      "esbuild": false,
+      "@swc/core": false,
+      "uglify-js": false,
+      "worker_threads": false,
+      "child_process": false
+    },
+  },
+});
+
