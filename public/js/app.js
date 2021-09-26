@@ -2079,6 +2079,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
@@ -2087,8 +2089,14 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       bookables: null,
-      isLoading: false
+      isLoading: false,
+      columns: 3
     };
+  },
+  computed: {
+    rows: function rows() {
+      return this.bookables === null ? 0 : Math.ceil(this.bookables.length / this.columns);
+    }
   },
   // beforeCreate() {
   //   console.log("before create");
@@ -2104,6 +2112,26 @@ __webpack_require__.r(__webpack_exports__);
         price: 3000
       }, {
         title: "Bookable2",
+        content: "Bookable2",
+        price: 3000
+      }, {
+        title: "Bookable3",
+        content: "Bookable2",
+        price: 3000
+      }, {
+        title: "Bookable4",
+        content: "Bookable2",
+        price: 3000
+      }, {
+        title: "Bookable5",
+        content: "Bookable2",
+        price: 3000
+      }, {
+        title: "Bookable6",
+        content: "Bookable2",
+        price: 3000
+      }, {
+        title: "Bookable7",
         content: "Bookable2",
         price: 3000
       }];
@@ -2137,6 +2165,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+//
+//
 //
 //
 //
@@ -37970,22 +38000,24 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm.isLoading
-    ? _c("div", [_vm._v("Data is loading...")])
-    : _c(
-        "div",
-        _vm._l(_vm.bookables, function(item, index) {
-          return _c("bookableListItem", {
-            key: index,
-            attrs: {
-              title: item.title,
-              content: item.content,
-              price: item.price
-            }
-          })
-        }),
-        1
-      )
+  return _c("div", [
+    _vm.isLoading
+      ? _c("div", [_vm._v("Data is loading...")])
+      : _c(
+          "div",
+          _vm._l(_vm.bookables, function(item, index) {
+            return _c("bookableListItem", {
+              key: index,
+              attrs: {
+                title: item.title,
+                content: item.content,
+                price: item.price
+              }
+            })
+          }),
+          1
+        )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -38010,12 +38042,14 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c("p", [_vm._v(_vm._s(_vm.title))]),
-    _vm._v(" "),
-    _c("p", [_vm._v(_vm._s(_vm.content))]),
-    _vm._v(" "),
-    _c("p", [_vm._v(_vm._s(_vm.price))])
+  return _c("div", { staticClass: "card" }, [
+    _c("div", { staticClass: "card-body" }, [
+      _c("h5", { staticClass: "card-title" }, [_vm._v(_vm._s(_vm.title))]),
+      _vm._v(" "),
+      _c("p", { staticClass: "card-text" }, [_vm._v(_vm._s(_vm.content))]),
+      _vm._v(" "),
+      _c("p", { staticClass: "card-text" }, [_vm._v(_vm._s(_vm.price))])
+    ])
   ])
 }
 var staticRenderFns = []
