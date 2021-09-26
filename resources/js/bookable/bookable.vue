@@ -1,6 +1,10 @@
 <template>
   <div>
-    <anyName></anyName>
+    <ol>
+      <li>
+        <anyName title="Hoshino" content="Hoshino" v-bind:price="200"></anyName>
+      </li>
+    </ol>
   </div>
 </template>
 

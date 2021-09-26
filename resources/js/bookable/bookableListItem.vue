@@ -1,6 +1,15 @@
 <template>
   <div>
-    <h1>Titile</h1>
-    <p>Some Paragraph</p>
+    <p>{{ title }}</p>
+    <p>{{ content }}</p>
+    <p>{{ price }}</p>
   </div>
 </template>
+
+<script>
+export default {
+  props: { title: String, content: String, price: Number },
+};
+</script>
+
+
