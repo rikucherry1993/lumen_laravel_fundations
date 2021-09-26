@@ -2,13 +2,24 @@
   <div>
     <div v-if="isLoading">Data is loading...</div>
     <div v-else>
-      <bookableListItem
-        v-for="(item, index) in bookables"
-        :key="index"
-        :title="item.title"
-        :content="item.content"
-        :price="item.price"
-      ></bookableListItem>
+      <div class="row mb-4" v-for="row in rows" :key="'row' + row">
+        <div
+          class="col"
+          v-for="(item, index) in bookablesInRow(row)"
+          :key="'row' + row + index"
+        >
+          <bookableListItem
+            :title="item.title"
+            :content="item.content"
+            :price="item.price"
+          ></bookableListItem>
+        </div>
+        <div
+          class="col"
+          v-for="p in placeholdersInRow(row)"
+          :key="'placeholder' + row + p"
+        ></div>
+      </div>
     </div>
   </div>
 </template>
@@ -39,6 +50,15 @@ export default {
   // beforeCreate() {
   //   console.log("before create");
   // },
+  methods: {
+    bookablesInRow(row) {
+      return this.bookables.slice((row - 1) * this.columns, row * this.columns);
+    },
+
+    placeholdersInRow(row) {
+      return this.columns - this.bookablesInRow(row).length;
+    },
+  },
 
   created() {
     this.isLoading = true;

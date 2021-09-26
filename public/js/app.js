@@ -2081,6 +2081,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
@@ -2101,6 +2112,14 @@ __webpack_require__.r(__webpack_exports__);
   // beforeCreate() {
   //   console.log("before create");
   // },
+  methods: {
+    bookablesInRow: function bookablesInRow(row) {
+      return this.bookables.slice((row - 1) * this.columns, row * this.columns);
+    },
+    placeholdersInRow: function placeholdersInRow(row) {
+      return this.columns - this.bookablesInRow(row).length;
+    }
+  },
   created: function created() {
     var _this = this;
 
@@ -38005,17 +38024,39 @@ var render = function() {
       ? _c("div", [_vm._v("Data is loading...")])
       : _c(
           "div",
-          _vm._l(_vm.bookables, function(item, index) {
-            return _c("bookableListItem", {
-              key: index,
-              attrs: {
-                title: item.title,
-                content: item.content,
-                price: item.price
-              }
-            })
+          _vm._l(_vm.rows, function(row) {
+            return _c(
+              "div",
+              { key: "row" + row, staticClass: "row mb-4" },
+              [
+                _vm._l(_vm.bookablesInRow(row), function(item, index) {
+                  return _c(
+                    "div",
+                    { key: "row" + row + index, staticClass: "col" },
+                    [
+                      _c("bookableListItem", {
+                        attrs: {
+                          title: item.title,
+                          content: item.content,
+                          price: item.price
+                        }
+                      })
+                    ],
+                    1
+                  )
+                }),
+                _vm._v(" "),
+                _vm._l(_vm.placeholdersInRow(row), function(p) {
+                  return _c("div", {
+                    key: "placeholder" + row + p,
+                    staticClass: "col"
+                  })
+                })
+              ],
+              2
+            )
           }),
-          1
+          0
         )
   ])
 }
