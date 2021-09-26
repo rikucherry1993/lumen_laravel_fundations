@@ -2076,13 +2076,28 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
     anyName: _bookableListItem__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
+  beforeCreate: function beforeCreate() {
+    console.log("before create");
+  },
+  created: function created() {
+    console.log("created");
+  },
+  beforeMount: function beforeMount() {
+    console.log("before mount");
+  },
+  mounted: function mounted() {
+    console.log("mounted");
+  },
+  beforeDestroy: function beforeDestroy() {
+    console.log("before destroy");
+  },
+  destroyed: function destroyed() {
+    console.log("destroyed");
   }
 });
 
@@ -37941,24 +37956,6 @@ var render = function() {
             attrs: { title: "Hoshino", content: "Hoshino", price: 200 }
           })
         ],
-        1
-      ),
-      _vm._v(" "),
-      _c(
-        "li",
-        [_c("anyName", { attrs: { title: "Hoshino", content: "Hoshino" } })],
-        1
-      ),
-      _vm._v(" "),
-      _c(
-        "li",
-        [_c("anyName", { attrs: { title: "Hoshino", content: "Hoshino" } })],
-        1
-      ),
-      _vm._v(" "),
-      _c(
-        "li",
-        [_c("anyName", { attrs: { title: "Hoshino", content: "Hoshino" } })],
         1
       )
     ])
