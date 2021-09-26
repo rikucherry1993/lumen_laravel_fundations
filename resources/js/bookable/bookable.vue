@@ -1,5 +1,6 @@
 <template>
-  <div>
+  <div v-if="isLoading">Data is loading...</div>
+  <div v-else>
     <bookableListItem
       v-for="(item, index) in bookables"
       :key="index"
@@ -21,6 +22,7 @@ export default {
   data() {
     return {
       bookables: null,
+      isLoading: false,
     };
   },
 
@@ -29,6 +31,7 @@ export default {
   // },
 
   created() {
+    this.isLoading = true;
     setTimeout(() => {
       this.bookables = [
         { title: "Bookable1", content: "Bookable1", price: 3000 },
@@ -38,6 +41,7 @@ export default {
           price: 3000,
         },
       ];
+      this.isLoading = false;
     }, 5000);
   },
 

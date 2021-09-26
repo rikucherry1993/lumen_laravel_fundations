@@ -2078,6 +2078,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
@@ -2085,7 +2086,8 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      bookables: null
+      bookables: null,
+      isLoading: false
     };
   },
   // beforeCreate() {
@@ -2094,6 +2096,7 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     var _this = this;
 
+    this.isLoading = true;
     setTimeout(function () {
       _this.bookables = [{
         title: "Bookable1",
@@ -2104,6 +2107,7 @@ __webpack_require__.r(__webpack_exports__);
         content: "Bookable2",
         price: 3000
       }];
+      _this.isLoading = false;
     }, 5000);
   } // beforeMount() {
   //   console.log("before mount");
@@ -37966,16 +37970,22 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    _vm._l(_vm.bookables, function(item, index) {
-      return _c("bookableListItem", {
-        key: index,
-        attrs: { title: item.title, content: item.content, price: item.price }
-      })
-    }),
-    1
-  )
+  return _vm.isLoading
+    ? _c("div", [_vm._v("Data is loading...")])
+    : _c(
+        "div",
+        _vm._l(_vm.bookables, function(item, index) {
+          return _c("bookableListItem", {
+            key: index,
+            attrs: {
+              title: item.title,
+              content: item.content,
+              price: item.price
+            }
+          })
+        }),
+        1
+      )
 }
 var staticRenderFns = []
 render._withStripped = true
