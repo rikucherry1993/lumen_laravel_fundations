@@ -1,22 +1,12 @@
 <template>
   <div>
-    <ol>
-      <li>
-        <anyName
-          v-if="bookable1"
-          :title="bookable1.title"
-          :content="bookable1.content"
-          :price="bookable1.price"
-        ></anyName>
-      </li>
-      <li>
-        <anyName
-          :title="bookable2.title"
-          :content="bookable2.content"
-          :price="bookable2.price"
-        ></anyName>
-      </li>
-    </ol>
+    <bookableListItem
+      v-for="(item, index) in bookables"
+      :key="index"
+      :title="item.title"
+      :content="item.content"
+      :price="item.price"
+    ></bookableListItem>
   </div>
 </template>
 
@@ -25,18 +15,12 @@ import BookableListItem from "./bookableListItem";
 
 export default {
   components: {
-    anyName: BookableListItem,
+    bookableListItem: BookableListItem,
   },
 
   data() {
     return {
-      bookable1: null,
-
-      bookable2: {
-        title: "222",
-        content: "222",
-        price: 4000,
-      },
+      bookables: null,
     };
   },
 
@@ -45,7 +29,16 @@ export default {
   // },
 
   created() {
-    console.log(this.bookable1.title);
+    setTimeout(() => {
+      this.bookables = [
+        { title: "Bookable1", content: "Bookable1", price: 3000 },
+        {
+          title: "Bookable2",
+          content: "Bookable2",
+          price: 3000,
+        },
+      ];
+    }, 5000);
   },
 
   // beforeMount() {
