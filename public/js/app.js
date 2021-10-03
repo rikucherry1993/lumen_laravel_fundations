@@ -2136,38 +2136,21 @@ __webpack_require__.r(__webpack_exports__);
       return console.log("Error: ".concat(result));
     });
     console.log(p);
-    setTimeout(function () {
-      _this.bookables = [{
-        title: "Bookable1",
-        content: "Bookable1",
-        price: 3000
-      }, {
-        title: "Bookable2",
-        content: "Bookable2",
-        price: 3000
-      }, {
-        title: "Bookable3",
-        content: "Bookable2",
-        price: 3000
-      }, {
-        title: "Bookable4",
-        content: "Bookable2",
-        price: 3000
-      }, {
-        title: "Bookable5",
-        content: "Bookable2",
-        price: 3000
-      }, {
-        title: "Bookable6",
-        content: "Bookable2",
-        price: 3000
-      }, {
-        title: "Bookable7",
-        content: "Bookable2",
-        price: 3000
-      }];
+    var request = axios.get("/api/bookables").then(function (response) {
+      _this.bookables = response.data;
       _this.isLoading = false;
-    }, 5000);
+    }); // setTimeout(() => {
+    //   this.bookables = [
+    //     { title: "Bookable1", content: "Bookable1", price: 3000 },
+    //     { title: "Bookable2", content: "Bookable2", price: 3000 },
+    //     { title: "Bookable3", content: "Bookable2", price: 3000 },
+    //     { title: "Bookable4", content: "Bookable2", price: 3000 },
+    //     { title: "Bookable5", content: "Bookable2", price: 3000 },
+    //     { title: "Bookable6", content: "Bookable2", price: 3000 },
+    //     { title: "Bookable7", content: "Bookable2", price: 3000 },
+    //   ];
+    //   this.isLoading = false;
+    // }, 5000);
   } // beforeMount() {
   //   console.log("before mount");
   // },
@@ -2209,7 +2192,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
     title: String,
-    content: String,
+    description: String,
     price: Number
   }
 });
@@ -38049,7 +38032,7 @@ var render = function() {
                       _c("bookableListItem", {
                         attrs: {
                           title: item.title,
-                          content: item.content,
+                          description: item.description,
                           price: item.price
                         }
                       })
@@ -38099,7 +38082,7 @@ var render = function() {
     _c("div", { staticClass: "card-body" }, [
       _c("h5", { staticClass: "card-title" }, [_vm._v(_vm._s(_vm.title))]),
       _vm._v(" "),
-      _c("p", { staticClass: "card-text" }, [_vm._v(_vm._s(_vm.content))]),
+      _c("p", { staticClass: "card-text" }, [_vm._v(_vm._s(_vm.description))]),
       _vm._v(" "),
       _c("p", { staticClass: "card-text" }, [_vm._v(_vm._s(_vm.price))])
     ])

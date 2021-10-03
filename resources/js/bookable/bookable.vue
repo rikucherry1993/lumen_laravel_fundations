@@ -10,7 +10,7 @@
         >
           <bookableListItem
             :title="item.title"
-            :content="item.content"
+            :description="item.description"
             :price="item.price"
           ></bookableListItem>
         </div>
@@ -72,18 +72,23 @@ export default {
       .catch((result) => console.log(`Error: ${result}`));
     console.log(p);
 
-    setTimeout(() => {
-      this.bookables = [
-        { title: "Bookable1", content: "Bookable1", price: 3000 },
-        { title: "Bookable2", content: "Bookable2", price: 3000 },
-        { title: "Bookable3", content: "Bookable2", price: 3000 },
-        { title: "Bookable4", content: "Bookable2", price: 3000 },
-        { title: "Bookable5", content: "Bookable2", price: 3000 },
-        { title: "Bookable6", content: "Bookable2", price: 3000 },
-        { title: "Bookable7", content: "Bookable2", price: 3000 },
-      ];
+    const request = axios.get("/api/bookables").then((response) => {
+      this.bookables = response.data;
       this.isLoading = false;
-    }, 5000);
+    });
+
+    // setTimeout(() => {
+    //   this.bookables = [
+    //     { title: "Bookable1", content: "Bookable1", price: 3000 },
+    //     { title: "Bookable2", content: "Bookable2", price: 3000 },
+    //     { title: "Bookable3", content: "Bookable2", price: 3000 },
+    //     { title: "Bookable4", content: "Bookable2", price: 3000 },
+    //     { title: "Bookable5", content: "Bookable2", price: 3000 },
+    //     { title: "Bookable6", content: "Bookable2", price: 3000 },
+    //     { title: "Bookable7", content: "Bookable2", price: 3000 },
+    //   ];
+    //   this.isLoading = false;
+    // }, 5000);
   },
 
   // beforeMount() {
