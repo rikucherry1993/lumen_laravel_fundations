@@ -2124,6 +2124,18 @@ __webpack_require__.r(__webpack_exports__);
     var _this = this;
 
     this.isLoading = true;
+    var p = new Promise(function (resolve, reject) {
+      console.log(resolve);
+      console.log(reject);
+      setTimeout(function () {
+        return resolve("Hello");
+      }, 3000);
+    }).then(function (result) {
+      return console.log("Sucess: ".concat(result));
+    })["catch"](function (result) {
+      return console.log("Error: ".concat(result));
+    });
+    console.log(p);
     setTimeout(function () {
       _this.bookables = [{
         title: "Bookable1",
